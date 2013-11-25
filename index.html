@@ -12,7 +12,7 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/main.min.css">
+        <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script data-main="js/app/pages/index" src="bower_components/requirejs/require.js"></script>
     </head>
@@ -32,14 +32,12 @@
         
         <div class="container">
             <div class="jumbotron">
-                <form action="page2.html">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <input class="typeahead main" type="text" name="search">
+                <form action="page2.html" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="search">
                         </div>
-                        <div class="col-md-7">
-                            <button type="submit" class="btn btn-success btn-lg">Search</button>
-                        </div>
+                        <button type="submit" class="btn btn-success btn-lg">Search</button>
                     </div>
                 </form>
             </div>

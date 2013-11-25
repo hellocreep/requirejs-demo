@@ -1,12 +1,12 @@
 {
-  "name": "app",
+  "name": "requirejs-demo",
   "version": "0.0.1",
   "authors": [
     "shaun"
   ],
-  "description": "test",
+  "description": "demo",
   "keywords": [
-    "test"
+    "demo"
   ],
   "license": "MIT",
   "private": true,
@@ -23,6 +23,7 @@
     "mustache": "~0.7.3",
     "requirejs": "~2.1.9",
     "typeahead.js": "~0.9.3",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "pikaday": "~1.1.0"
   }
 }

@@ -36,7 +36,6 @@ module.exports = function(grunt) {
 		cssmin: {
 			options: {
 				banner: '/*Compressed css at' + Date() + '*/\n',
-                report: 'gzip'
 			},
 			combine: {
 			 	files: {
@@ -112,6 +111,19 @@ module.exports = function(grunt) {
 					keepalive: true
 				}
 			}
+		},
+		watch: {
+			css: {
+				files: [
+					'css/bootstrap.css',
+					'css/pikaday.css',
+					'css/typeahead.css'
+				],
+				tasks: ['concat'],
+				options: {
+					livereload: true
+				}
+			}
 		}
 	});	
 
@@ -121,8 +133,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-	grunt.registerTask('default', ['copy', 'concat', 'cssmin', 'uglify']);
+	grunt.registerTask('default', ['copy', 'concat', 'cssmin']);
 	grunt.registerTask('server', ['connect']);
 }
