@@ -1,53 +1,76 @@
+/**
+*	Search suggetion module
+*
+*	@module SearchSuggest
+*/
+
 define([
-	'mustache',
+	'handlebars',
 	'moment',
 	'underscore',
 	'typeahead'
-], function(Mustache, moment, _, typeahead) {
+], function(Handlebars, moment, _, typeahead) {
 	var SeachSuggest = function(opts) {
-		this.opts = opts;
+		this.defaults = {
+			name: 'search-suggest',
+			valueKey: 'value',
+			limit: 5
+		};
 
-		this.init(opts);	
+		this.conf = $.extend(true, this.defaults, opts);
+
+		this.init(this.conf);	
 	}
 
-	SeachSuggest.prototype.init = function(opts) {
+	SeachSuggest.prototype.init = function(conf) {
 
-		var el = opts.el,
+		var el = conf.el,
 			settings = {
-				name: opts.name || 'search-suggest',
-				valueKey: opts.valueKey || 'value',
-				limit: opts.limit || 4 
+				name: conf.name,
+				valueKey: conf.valueKey,
+				limit: conf.limit
 			};
 		
-		if(opts.tmpl) {
-			$.extend(settings, {template: Mustache.compile(opts.tmpl)});
+		if(conf.tmpl) {
+			Handlebars.registerHelper('dateFormat', function() {
+				return moment(this.date).fromNow();
+			});
+			$.extend(settings, {template: Handlebars.compile(conf.tmpl)});
 		}
 
-		if(opts.prefetch) {
-			$.extend(settings, {prefetch: opts.prefetch});
+		if(conf.prefetch) {
+			$.extend(settings, {prefetch: conf.prefetch});
 		}
 
-		if(opts.remote) {
+		if(conf.remote) {
 			var remote = {
-					url: opts.remote + '?' + opts.queryName + '=%QUERY'	
+					url: conf.remote + '?' + conf.queryName + '=%QUERY'
+				};
+			if(conf.filter) {
+				var filter = function(result) {
+					return _.filter(result, function(obj) {
+						return obj.active === true; 
+					});
 				}
+				$.extend(remote, {filter: filter});
+			}
 			$.extend(true, settings, {remote: remote});
 		}
 
-		el.typeahead(settings).on('typeahead:selected', function(e) {
-			if(typeof opts.cb === 'function') {
-				opts.cb(e);
+		el.val('').typeahead(settings).on('typeahead:selected', function(e) {
+			if(typeof conf.cb === 'function') {
+				conf.cb(e);
 			}
 		});
 	}
 
 	SeachSuggest.prototype.destory = function() {
-		return this.opts.el.typeahead('destory');	
+		this.conf.el.typeahead('destory');	
 	}
 
 	SeachSuggest.prototype.setQuery = function(query) {
 		if(!query) return;
-		this.opts.el.typeahead('setQuery', query);
+		this.conf.el.typeahead('setQuery', query);
 	}
 
 	return SeachSuggest;	

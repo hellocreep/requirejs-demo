@@ -1,10 +1,13 @@
+/** 
+* @config requirejs config
+*/
 require.config({
 	baseUrl: 'js',
 	paths: {
 		/* Vendor */
 		jquery: 'vendor/jquery/jquery',
 		typeahead: 'vendor/jquery-plugins/typeahead',
-		mustache: 'vendor/mustache/mustache',
+		handlebars: 'vendor/handlebars/handlebars',
 		moment: 'vendor/moment/moment',
 		underscore: 'vendor/underscore/underscore',
 		pikaday: 'vendor/pikaday/pikaday',
@@ -18,7 +21,10 @@ require.config({
 	shim: {
 		typeahead: {
 			exports: 'typeahead',
-			deps: ['jquery', 'mustache', 'underscore', 'moment']
+			deps: ['jquery']
+		},
+		handlebars: {
+			exports: 'Handlebars'
 		},
 		underscore: {
 			exports: '_'

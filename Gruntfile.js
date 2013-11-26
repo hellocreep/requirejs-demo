@@ -11,10 +11,11 @@ module.exports = function(grunt) {
 						src: [
 						'jquery/jquery.js',
 						'moment/moment.js',
-						'mustache/mustache.js',
+						'handlebars/handlebars.js',
 						'requirejs/require.js',
 						'underscore/underscore.js',
-						'pikaday/pikaday.js'
+						'pikaday/pikaday.js',
+						'modernizr/modernizr.js'
 					], dest: 'js/vendor/'},
 					{expand: true, cwd: 'bower_components/typeahead.js/dist', src: ['typeahead.js'], dest: 'js/vendor/jquery-plugins/'}
 				]
@@ -53,7 +54,8 @@ module.exports = function(grunt) {
 					'js/vendor/mustache/mustache.min.js': ['js/vendor/mustache/mustache.js'],
 					'js/vendor/underscore/underscore.min.js': ['js/vendor/underscore/underscore.js'],
 					'js/vendor/pikaday/pikaday.min.js': ['js/vendor/pikaday/pikaday.js'],
-					'js/utils/util.min.js': ['js/utils/util.js']
+					'js/utils/util.min.js': ['js/utils/util.js'],
+					'js/vendor/modernizr/modernizr.js': ['js/vendor/modernizr/modernizr.js']
 				}
 			}
 		},
@@ -70,7 +72,7 @@ module.exports = function(grunt) {
 						/* Vendor */
 						jquery: 'vendor/jquery/jquery',
 						typeahead: 'vendor/jquery-plugins/typeahead',
-						mustache: 'vendor/mustache/mustache',
+						handlebars: 'vendor/handlebars/handlebars',
 						moment: 'vendor/moment/moment',
 						underscore: 'vendor/underscore/underscore',
 						pikaday: 'vendor/pikaday/pikaday',
@@ -84,7 +86,10 @@ module.exports = function(grunt) {
 					shim: {
 						typeahead: {
 							exports: 'typeahead',
-							deps: ['jquery', 'mustache', 'underscore', 'moment']
+							deps: ['jquery']
+						},
+						handlebars: {
+							exports: 'Handlebars'
 						},
 						underscore: {
 							exports: '_'
@@ -93,7 +98,7 @@ module.exports = function(grunt) {
 					modules: [
 						{
 							name: 'app/pages/index',
-							include: ['search_suggest']
+							include: ['search_suggest', 'util']
 						},
 						{
 							name: 'app/pages/page2',
@@ -124,6 +129,16 @@ module.exports = function(grunt) {
 					livereload: true
 				}
 			}
+		},
+		yuidoc: {
+			compile: {
+				name: '<%= pkg.name %>',
+				description: '<%= pkg.description %>',
+				options: {
+					paths: 'js/app/',
+					outdir: 'docs/'
+				}
+			}
 		}
 	});	
 
@@ -134,8 +149,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
 
 	grunt.registerTask('default', ['copy', 'concat', 'cssmin']);
+	grunt.registerTask('css', ['concat', 'cssmin']);
+	grunt.registerTask('docs', ['yuidoc']);
 	grunt.registerTask('server', ['connect']);
 }

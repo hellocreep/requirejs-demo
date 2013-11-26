@@ -13,7 +13,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/modernizr/modernizr.js"></script>
         <script data-main="js/app/pages/index" src="bower_components/requirejs/require.js"></script>
     </head>
     <body>
@@ -31,16 +31,15 @@
         </nav>
         
         <div class="container">
-            <div class="jumbotron">
-                <form action="page2.html" class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-md-10">
-                            <input class="form-control" type="text" name="search">
-                        </div>
-                        <button type="submit" class="btn btn-success btn-lg">Search</button>
+            <form action="/" class="form-horizontal main-search">
+                <div class="form-group">
+                    <div class="col-md-5 col-md-offset-3">
+                        <input class="form-control" type="text" name="search" placeholder="Search">
                     </div>
-                </form>
-            </div>
+                    <button type="submit" class="btn btn-success btn-lg">Search</button>
+                </div>
+            </form>
+            <div class="row"></div>
         </div>
     </body>
 </html>

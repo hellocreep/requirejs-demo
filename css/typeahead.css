@@ -3,8 +3,26 @@
   margin-bottom: 0;
 }
 
+.main-search .form-control,
+.main-search .tt-query,
+.main-search .tt-hint {
+  width: 450px;
+  height: 47px;
+  padding-left: 5px;
+  font-size: 16px;
+}
+
+.header-search .form-control,
+.header-search .tt-query,
+.header-search .tt-hint {
+  width: 270px;
+  height: 34px;
+  padding-left: 5px;
+}
+
 .tt-dropdown-menu {
-  min-width: 160px;
+  /*min-width: 160px;*/
+  width: 100%;
   margin-top: 2px;
   padding: 5px 0;
   background-color: #fff;
