@@ -5,7 +5,6 @@ module.exports = function(grunt) {
 			main: {
 				files: [
 					{expand: true, cwd: 'bower_components/bootstrap/dist/css/', src: ['bootstrap.css'], dest: 'css/'},
-					{expand: true, cwd: 'bower_components/pikaday/css/', src: ['pikaday.css'], dest: 'css/'},
 					{expand: true, 
 						cwd: 'bower_components/',
 						src: [
@@ -14,7 +13,6 @@ module.exports = function(grunt) {
 						'handlebars/handlebars.js',
 						'requirejs/require.js',
 						'underscore/underscore.js',
-						'pikaday/pikaday.js',
 						'modernizr/modernizr.js'
 					], dest: 'js/vendor/'},
 					{expand: true, cwd: 'bower_components/typeahead.js/dist', src: ['typeahead.js'], dest: 'js/vendor/jquery-plugins/'}
@@ -29,7 +27,6 @@ module.exports = function(grunt) {
 				src: [
 					'css/bootstrap.css',
 					'css/typeahead.css',
-					'css/pikaday.css'
 				],
 				dest: 'css/main.css'
 			}
@@ -53,7 +50,6 @@ module.exports = function(grunt) {
 					'js/vendor/requirejs/require.min.js': ['js/vendor/requirejs/require.js'],
 					'js/vendor/mustache/mustache.min.js': ['js/vendor/mustache/mustache.js'],
 					'js/vendor/underscore/underscore.min.js': ['js/vendor/underscore/underscore.js'],
-					'js/vendor/pikaday/pikaday.min.js': ['js/vendor/pikaday/pikaday.js'],
 					'js/utils/util.min.js': ['js/utils/util.js'],
 					'js/vendor/modernizr/modernizr.js': ['js/vendor/modernizr/modernizr.js']
 				}
@@ -75,7 +71,6 @@ module.exports = function(grunt) {
 						handlebars: 'vendor/handlebars/handlebars',
 						moment: 'vendor/moment/moment',
 						underscore: 'vendor/underscore/underscore',
-						pikaday: 'vendor/pikaday/pikaday',
 
 						/* Modules */
 						search_suggest: 'app/modules/search-suggest',
@@ -102,7 +97,7 @@ module.exports = function(grunt) {
 						},
 						{
 							name: 'app/pages/page2',
-							include: ['search_suggest', 'pikaday', 'util']
+							include: ['search_suggest', 'util']
 						}
 					]
 				}
@@ -121,7 +116,6 @@ module.exports = function(grunt) {
 			css: {
 				files: [
 					'css/bootstrap.css',
-					'css/pikaday.css',
 					'css/typeahead.css'
 				],
 				tasks: ['concat'],
