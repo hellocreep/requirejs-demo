@@ -48,10 +48,9 @@ module.exports = function(grunt) {
 					'js/vendor/jquery-plugins/typeahead.min.js': ['js/vendor/jquery-plugins/typeahead.js'],
 					'js/vendor/moment/moment.min.js': ['js/vendor/moment/moment.js'],
 					'js/vendor/requirejs/require.min.js': ['js/vendor/requirejs/require.js'],
-					'js/vendor/mustache/mustache.min.js': ['js/vendor/mustache/mustache.js'],
 					'js/vendor/underscore/underscore.min.js': ['js/vendor/underscore/underscore.js'],
 					'js/utils/util.min.js': ['js/utils/util.js'],
-					'js/vendor/modernizr/modernizr.js': ['js/vendor/modernizr/modernizr.js']
+					'js/vendor/modernizr/modernizr.min.js': ['js/vendor/modernizr/modernizr.js']
 				}
 			}
 		},

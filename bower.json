@@ -23,6 +23,7 @@
     "requirejs": "~2.1.9",
     "typeahead.js": "~0.9.3",
     "underscore": "~1.5.2",
-    "handlebars": "1.0.0"
+    "handlebars": "1.0.0",
+    "modernizr": "~2.7.0"
   }
 }
