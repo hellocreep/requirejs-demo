@@ -132,6 +132,11 @@ module.exports = function(grunt) {
 					outdir: 'docs/'
 				}
 			}
+		},
+		karma: {
+			unit: {
+				configFile: 'karma.conf.js'
+			}
 		}
 	});	
 
