@@ -134,21 +134,13 @@ module.exports = function(grunt) {
 			}
 		},
 		karma: {
-			unit: {
+			test: {
 				configFile: 'karma.conf.js'
 			}
 		}
 	});	
 
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-requirejs');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-yuidoc');
-
+	require('load-grunt-tasks')(grunt);
 
 	grunt.registerTask('default', ['copy', 'concat', 'cssmin']);
 	grunt.registerTask('css', ['concat', 'cssmin']);

@@ -14,10 +14,14 @@
     "grunt-contrib-requirejs": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-yuidoc": "~0.5.0",
-    "grunt-karma": "~0.5.0"
+    "load-grunt-tasks": "~0.2.0",
+    "karma": "~0.10.2",
+    "karma-mocha": "~0.1.1",
+    "karma-coverage": "~0.1.0",
+    "grunt-karma": "~0.6.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt karma:test"
   },
   "keywords": [
     "test"

@@ -6,31 +6,22 @@ module.exports = function(config) {
         frameworks: ['mocha', 'requirejs'],
 
         // list of files / patterns to load in the browser
-        files: [{
-                pattern: 'js/**/*.js',
-                included: false
-            },{
-                pattern: 'test/**/*Spec.js',
-                included: false
-            },
-
+        files: [
+            {pattern: 'test/**/*Spec.js', included: false},
+            {pattern: 'js/**/*.js', included: false},
             'test/test-main.js'
         ],
 
         // list of files to exclude
-        exclude: [],
+        exclude: [
+            'js/app/pages/*.js'
+        ],
 
         // use dots reporter, as travis terminal does not support escaping sequences
         // possible values: 'dots', 'progress'
         // CLI --reporters progress
-        reporters: ['progress', 'junit'],
+        reporters: ['progress', 'coverage'],
 
-        //reporters: ['coverage'],
-
-        junitReporter: {
-            // will be resolved to basePath (in the same way as files/exclude patterns)
-            outputFile: 'test-results.xml'
-        },
 
         // web server port
         // CLI --port 9876
@@ -64,7 +55,7 @@ module.exports = function(config) {
         // CLI --browsers Chrome,Firefox,Safari
         //browsers: [process.env.TRAVIS ? 'Firefox' : 'Chrome'],
 
-        browsers: ['PhantomJS'],
+        browsers: ['PhantomJS', 'Chrome'],
 
         // If browser does not capture in given timeout [ms], kill it
         // CLI --capture-timeout 5000
@@ -78,19 +69,16 @@ module.exports = function(config) {
         // CLI --report-slower-than 500
         reportSlowerThan: 500,
 
-        // compile coffee scripts
-        preprocessors: {
-            '**/*.coffee': 'coffee'
-        },
+        preprocessors: { '*.js': ['coverage'] },
 
-        plugins: [
-            'karma-requirejs',
-            'karma-mocha',
-            'karma-chrome-launcher',
-            'karma-firefox-launcher',
-            'karma-phantomjs-launcher',
-            'karma-junit-reporter',
-            //'karma-coverage-reporter'
-        ]
+        // plugins: [
+        //     'karma-requirejs',
+        //     'karma-mocha',
+        //     'karma-chrome-launcher',
+        //     'karma-firefox-launcher',
+        //     'karma-phantomjs-launcher',
+        //     'karma-junit-reporter',
+        //     'karma-coverage-reporter'
+        // ]
     });
 };
